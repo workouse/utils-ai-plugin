@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: Developer Utility Tools 
+  version: 1.0.0
+  description: A collection of utility endpoints for various common tasks for mainly developers usage.
+
+paths:
+  /uuid:
+    get:
+      summary: Generate a UUID
+      responses:
+        '200':
+          description: A UUID string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  uuid:
+                    type: string
+
+  /color-conversion:
+    get:
+      summary: It will get color format and a color to convert between hex to rgb. 
+      parameters:
+        - in: query
+          name: color
+          schema:
+            type: string
+          required: true
+          description: The color code that wanted to convert
+        - in: query
+          name: format
+          schema:
+            type: string
+          required: true
+          description: The target color format (hex or rgb)
+      responses:
+        '200':
+          description: The converted color code
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+        '400':
+          description: Missing or invalid parameters
+
+  /timestamp-conversion:
+    get:
+      summary: Convert a Unix timestamp to a formatted date/time string
+      parameters:
+        - in: query
+          name: timestamp
+          schema:
+            type: string
+          required: true
+          description: The Unix timestamp to convert
+        - in: query
+          name: format
+          schema:
+            type: string
+          required: true
+          description: The format string for the output. It must be in python date formatting style.
+      responses:
+        '200':
+          description: The formatted time
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  formatted_time:
+                    type: string
+        '400':
+          description: Missing or invalid parameters
+
+  /jwt-generate:
+    post:
+      summary: Generate a JWT token
+      parameters:
+        - in: query
+          name: JWT_SECRET
+          schema:
+            type: string
+          required: true
+          description: The secret key used for token generation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: A JWT token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '400':
+          description: Missing payload or secret key
+
+  /jwt-verify:
+    post:
+      summary: Verify and decode a JWT token
+      parameters:
+        - in: query
+          name: JWT_SECRET
+          schema:
+            type: string
+          required: true
+          description: The secret key used for token verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          description: Decoded token data
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Missing token or secret key
+

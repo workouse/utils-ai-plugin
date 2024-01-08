@@ -1,0 +1,17 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Developer Tools",
+    "name_for_model": "utils",
+    "description_for_human": "Use standart utility tools for your development tasks",
+    "description_for_model": "Plugin for hashing (md5 and sha256), converting data (rgb to hex, hex to rgb, unix timestamp to formatted date),encoding and decoding(base64, url, html), and verification and generation (jwt, uuid).",
+    "auth":{
+        "type":"none"
+    },
+    "api":{
+        "type":"openapi",
+        "url":"https://utils.workouse.com"
+    },
+    "logo_url": "https://utils.workouse.com/static/logo.png",
+    "contact_email":"info@workouse.com",
+    "legal_info_url":"https://utils.workouse.com/legal"
+}
