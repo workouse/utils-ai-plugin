@@ -1,6 +1,6 @@
-# Quart API Application
+# Utils AI Plugin
 
-This repository contains a Quart-based API application providing various utility endpoints. It's designed to be run in a Docker container and is equipped with an NGINX configuration for reverse proxy setup.
+This repository contains Utils AI Plugin (a Quart-based API application providing various utility endpoints). It's designed to be run in a Docker container and is equipped with an NGINX configuration for reverse proxy setup.
 
 ## Features
 
